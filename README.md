@@ -17,7 +17,7 @@ The OpenAPI documentation is available at http://127.0.0.1:1234/docs/
 
 Not much interest in running it locally of course, so now go and use it in your cloud infrastructure to test your setup.
 
-## Development
+## Development
 
 ### Pre-requisites
 
@@ -54,6 +54,6 @@ Build and publish image:
 docker buildx build --platform linux/amd64,linux/arm64  . -t pferrot/dumb-rest-api:tag --push
 ```
 
-## Resources
+## Resources
 
 [Write a scalable OpenAPI specification for a Node.js API](https://blog.logrocket.com/write-scalable-openapi-specification-node-js/)
