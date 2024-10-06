@@ -1,0 +1,22 @@
+{
+    "tags": ["dumb"],
+    "description": "Just a dumb GET endpoint.",
+    "parameters": [
+      {
+        "name": "param1",
+        "in": "path",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../../responses/success.json"
+      },
+      "500": {
+        "$ref": "../../responses/internal-server-error.json"
+      }
+    }
+  }

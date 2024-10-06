@@ -1,0 +1,240 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Dumb REST API",
+    "description": "Dumb REST API to test your infra.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://{host}:{port}",
+      "description": "local server",
+      "variables": {
+        "host": {
+          "default": "127.0.0.1",
+          "description": "points to the application running locally"
+        },
+        "port": {
+          "default": "3001"
+        }
+      }
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Dumb": {
+        "type": "object",
+        "required": [
+          "property1",
+          "property2",
+          "property3",
+          "property4"
+        ],
+        "properties": {
+          "property1": {
+            "type": "string"
+          },
+          "property2": {
+            "type": "string",
+            "example": "4"
+          },
+          "property3": {
+            "type": "number"
+          },
+          "property4": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "responses": {
+      "Success": {
+        "description": "Response for operation successful",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "boolean",
+                  "enum": [
+                    true
+                  ],
+                  "example": true
+                },
+                "dumb": {
+                  "$ref": "#/components/schemas/Dumb"
+                }
+              }
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Response for operation successful",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Something went wrong while creating a new dumb!"
+                },
+                "dumb": {
+                  "type": "object",
+                  "enum": [
+                    null
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "BadRequest": {
+        "description": "Response for operation successful",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Something went wrong while creating a new dumb!"
+                },
+                "dumb": {
+                  "type": "object",
+                  "enum": [
+                    null
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/dumb": {
+      "post": {
+        "tags": [
+          "dumb"
+        ],
+        "description": "Just a dumb POST endpoint.",
+        "requestBody": {
+          "description": "Request parameters in JSON format",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "property1",
+                  "property2",
+                  "property3",
+                  "property4"
+                ],
+                "properties": {
+                  "property1": {
+                    "type": "string"
+                  },
+                  "property2": {
+                    "type": "string",
+                    "example": "4"
+                  },
+                  "property3": {
+                    "type": "number"
+                  },
+                  "property4": {
+                    "type": "string",
+                    "example": "dumb-example"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "dumb"
+        ],
+        "description": "Just a dumb PUT endpoint.",
+        "requestBody": {
+          "description": "Request parameters in JSON format",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "property1"
+                ],
+                "properties": {
+                  "property1": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/dumb/{param1}": {
+      "get": {
+        "tags": [
+          "dumb"
+        ],
+        "description": "Just a dumb GET endpoint.",
+        "parameters": [
+          {
+            "name": "param1",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Success"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    }
+  }
+}

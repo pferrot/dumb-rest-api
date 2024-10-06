@@ -1,0 +1,32 @@
+{
+    "tags": ["dumb"],
+    "description": "Just a dumb PUT endpoint.",
+    "requestBody": {
+      "description": "Request parameters in JSON format",
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "required": ["property1"],
+            "properties": {
+              "property1": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../../responses/success.json"
+      },
+      "400": {
+        "$ref": "../../responses/bad-request.json"
+      },
+      "500": {
+        "$ref": "../../responses/internal-server-error.json"
+      }
+    }
+  }

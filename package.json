@@ -1,0 +1,22 @@
+{
+  "name": "dumb-rest-api",
+  "version": "1.0.0",
+  "description": "Dumb REST API to test your infra.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "npx nodemon server.js",
+    "docs:debug": "swagger-cli validate -d docs/index.json",
+    "docs:generate": "npm run docs:debug && swagger-cli bundle docs/index.json --outfile openapi.json"
+  },
+  "author": "Patrice Ferrot",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@apidevtools/swagger-cli": "^4.0.4"
+  }
+}

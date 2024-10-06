@@ -1,0 +1,15 @@
+{
+    "/dumb": {
+      "post": {
+        "$ref": "./dumb/dumbCreate.json"
+      },
+      "put": {
+        "$ref": "./dumb/dumbUpdate.json"
+      }
+    },
+    "/dumb/{param1}": {
+      "get": {
+        "$ref": "./dumb/dumbRead.json"
+      }
+    }
+  }
