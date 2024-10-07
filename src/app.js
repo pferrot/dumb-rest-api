@@ -21,6 +21,13 @@ app.get('/', (req, res) => {
 });
 
 app.use('/dumb', dumbRoutes);
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
+app.get("/docs/open-api.json", (req, res) => res.json(openApiDocumentation));
+
+var options = {
+    swaggerOptions: {
+        url: "/docs/open-api.json",
+    },
+}
+app.use('/docs', swaggerUi.serveFiles(null, options), swaggerUi.setup(openApiDocumentation, options));
 
 module.exports = app;
